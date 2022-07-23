@@ -7,13 +7,29 @@
 </head>
 <body>
 <div id="app">
-  <h1> {{ message }} </h1>
+
+  <input type="text" v-on:keyup="changeOnKeyUp">
+  <h1> {{ text }} </h1>
+
+  <input type="text" v-on:keyup.ctrl.enter="textctrl = $event.target.value">
+  <h1> {{ textctrl }} </h1>
+
+  <form action="" method="GET" v-on:submit.prevent>
+    <input type="button" value="Submit">
+  </form>
 </div>
 <script type="text/javascript">
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'Hello Vue!'
+        text: '',
+        textctrl: ''
+      },
+      methods: {
+        changeOnKeyUp(event){
+            //alert(event.target.value);
+          this.text = event.target.value;
+        }
       }
     })
 </script>
