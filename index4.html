@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ol>
+        <li v-for="movie in combineData">{{movie}}</li>
+    </ol>
+
+    <input type="button" v-on:click="addMovie" value="Add Movie">
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        movies: [
+          {name: "The Matrix", year: 1999},
+          {name: "The Lord of the rings", year: 2000},
+          {name: "Harry Potter", year: 2003}
+        ]
+      },
+      methods:{
+        addMovie(){
+          this.movies.push({
+            name: 'Trash Movie', year:2022
+          });
+        }
+      },
+      computed: {
+        combineData(){
+          return this.movies.map(function(movie){
+            return movie.name + ' (' + movie.year + ')';
+          });
+        }
+      },
+      watch: {
+        movies(movies){
+          var newMovie = movies[movies.length-1];
+          alert(newMovie.name + ' from ' + newMovie.year + ' has been added!');
+        }
+      }
+    });
+</script>
+</body>
+</html>

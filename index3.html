@@ -17,10 +17,20 @@
   <p>Age type {{ typeof age }}</p>
 
   <input type="password" placeholder="Please enter here your password!" v-model="password">
-  <p v-if="password != '' && password.length > 8">Awesome! Your password is longer than 8 characters</p>
-  <p v-else-if="password != '' && password.length <= 8">Please enter a longer password</p>
+  <p v-if="password.length > 8">Awesome! Your password is longer than 8 characters</p>
+  <p v-else-if="password.length >0 ">Please enter a longer password</p>
   <p v-else>Please enter a password</p>
 
+  <ol>
+    <li v-for="category in categories">
+      {{category.name}}
+      <ul>
+        <li v-for="sub in category.sub">
+          {{sub}}
+        </li>
+      </ul>
+    </li>
+  </ol>
 </div>
 <script type="text/javascript">
     var app = new Vue({
@@ -29,12 +39,17 @@
         text: 'Input Value Ignored',
         textTrim: 'trim',
         age: 35,
-        password: ''
+        password: '',
+        categories: [
+          {name: 'Javascript', sub: ['Vue.js','React','Angular2']},
+          {name: 'Javascript', sub: ['Vue.js','React','Angular2']},
+          {name: 'Javascript', sub: ['Vue.js','React','Angular2']}
+        ]
       },
       methods: {
 
       }
-    })
+    });
 </script>
 </body>
 </html>
