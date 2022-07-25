@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+      .shape {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+      }
+    </style>
+</head>
+<body>
+<div id="app">
+  <div class="shape" v-bind:style="styleInline"></div>
+  <input type="button" value="Change DIV Geometry" v-on:click="changeDivGeometry">
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        styleInline: {}
+      },
+      methods: {
+        changeDivGeometry(){
+            if(typeof this.styleInline['border-radius'] !== 'undefined'){
+              Vue.set(this.styleInline, 'border-radius', undefined);
+            } else {
+              Vue.set(this.styleInline, 'border-radius', '50%');
+            }
+        }
+      }
+    });
+</script>
+</body>
+</html>
