@@ -10,18 +10,47 @@
         height: 150px;
         background-color: blue;
       }
+      .highlighted{
+        background-color: lightgrey;
+      }
     </style>
 </head>
 <body>
 <div id="app">
-  <div class="shape" v-bind:style="styleInline"></div>
-  <input type="button" value="Change DIV Geometry" v-on:click="changeDivGeometry">
+  <div class="shape" v-bind:style="styleInline" @click="changeDivGeometry"></div>
+  <input type="button" value="Change DIV Geometry" v-on:click="changeDivGeometry"></input>
+  <h1>Employees</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <td>Index</td>
+        <td>Name</td>
+        <td>Title</td>
+        <td>Company</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(employee,index) in employees" v-bind:class="index%2==0 ? 'highlighted': ''">
+        <td>{{index}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.title}}</td>
+        <td>{{companyName}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 <script type="text/javascript">
     var app = new Vue({
       el: '#app',
       data: {
-        styleInline: {}
+        styleInline: {},
+        employees: [
+        {name: "Bob",  title: 'Accountant'},
+        {name: "Jack", title: 'IT'},
+        {name: "Brad", title: 'Vue Expert'},
+        {name: "Ann",  title: 'Manager'},
+        ],
+        companyName: 'Waywern Corp.'
       },
       methods: {
         changeDivGeometry(){
