@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">{{message}}</div>
+<div id="second">{{messageOutside}}<br>
+<input type="button" @click="clickForTestOutsideCall" value="Try Me!)"></div>
+<script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Try variable outside of this vue instance'
+      }
+    });
+    var second = new Vue({
+      el: '#second',
+      data: {
+        messageOutside: app.message
+      },
+      methods: {
+        clickForTestOutsideCall(){
+          alert('This is try to grab variable outside ' + app.message);
+        }
+      }
+    });
+</script>
+</body>
+</html>
