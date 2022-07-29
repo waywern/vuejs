@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>Counter: {{ counter }} </p>
+    <button @click="counter++">Increase counter</button>
+    <button @click="person.name.firstName='Pooper'">Change First Name</button>
+</div>
+<script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        counter: 1,
+        person: {
+          name: {
+            firstName: 'Ivan',
+            lastName: 'Pupkin'
+          }
+        }
+      }
+    });
+    /*app.$watch('counter', function(newValue, oldValue){
+      alert('Counter changed from ' + oldValue + ' to ' + newValue + '!');
+    });
+    app.$watch('person.name.firstName', function(newValue, oldValue){
+      alert('First Name changed from ' + oldValue + ' to ' + newValue + '!');
+    });
+    app.$watch('person.name', function(newValue, oldValue){
+      alert('Person changed from ' + oldValue.firstName + ' to ' + newValue.firstName + '!');
+    }, {deep: true});*/
+    var unwatch = app.$watch(function() {
+        return this.counter;
+      },
+      function(newValue, oldValue){
+        alert('First Name changed from ' + oldValue + ' to ' + newValue + '!');
+    });
+
+    setTimeout(function(){
+      unwatch();
+    }, 5000);
+</script>
+</body>
+</html>

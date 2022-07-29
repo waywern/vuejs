@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ message }} </p>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+      data: {
+        message: 'Hello Message'
+      }
+    });
+    //vm.$mount('#app');
+    vm.$mount(document.getElementById('app'));
+</script>
+</body>
+</html>
