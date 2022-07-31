@@ -7,17 +7,19 @@
 </head>
 <body>
 <div id="app">
-    <div class="test"></div>
-    <div class="test"></div>
+    <p>Counter: {{ counter }} </p>
+    <button @click="counter++">Increase counter</button>
 </div>
 <script type="text/javascript">
-    var app = new Vue({
-      el: '.test',
-      template: `<h1>{{message}}</h1>`,
+    var vm = new Vue({
+      el: '#app',
       data: {
-        message: 'Hello World!'
+        counter: 1
       }
     });
+    setTimeout(function(){
+      vm.$destroy();
+    },5000);
 </script>
 </body>
 </html>

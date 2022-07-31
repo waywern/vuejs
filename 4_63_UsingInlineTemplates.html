@@ -19,7 +19,10 @@
         message: 'Hello Message'
       }
     });
-    vm.$mount('#app');
+    //vm.$mount('#app');
+    vm.$mount();
+    console.log(vm.$el);
+    document.getElementById('app').appendChild(vm.$el);
 </script>
 </body>
 </html>
